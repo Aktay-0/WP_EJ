@@ -1,0 +1,105 @@
+﻿{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Домашняя - студент</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap core CSS -->
+    <link href="{% static 'teacher.html/module.html/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
+	<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
+	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'> -->
+
+	<!-- Custom styles for this template -->
+    <link href="{% static 'teacher.html/module.html/css/style.css" rel="stylesheet' %}">
+	<link rel="icon" href="{% static 'teacher.html/module.html/image/favicon.png' %}">
+</head>
+<body>
+
+	<!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="http://10.118.96.12:8000">КПИТ.ЖУРНАЛ</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="http://10.118.96.12:8000/teacher/info">Главная</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://10.118.96.12:8000/teacher/logbook">Журнал</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://10.118.96.12:8000/teacher/table">Табель</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://10.118.96.12:8000/teacher/load">Нагрузка</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://10.118.96.12:8000/teacher/schedule_teacher">Расписание</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://10.118.96.12:8000/logout">Выход</a>
+            </li>
+            <!--
+            <li class="nav-item">
+              <a class="nav-link" href="http://10.118.96.12:8000/teacher/group">Группы</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://10.118.96.12:8000/teacher/curator">Куратор</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://10.118.96.12:8000/teacher/log">Личный кабинет</a>
+            </li>
+          -->
+          </ul>
+        </div>
+    </div>
+    </nav>
+    <!-- Page Content -->
+    <div class="container">
+      <form method="POST" action="http://10.118.96.12:8000/teacher/logbook">
+        <input type="hidden" name="month" value={{month}}>
+        <input type="hidden" name="group" value={{group}}>
+        {% csrf_token %}
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+          <td>
+          <tr>
+          <td>
+          {% for subject in storage.getSubjects %}
+             <tr>
+               <td><button type="send" name="subject" value="{{subject.name}}" class="btn btn-primary">{{subject.name}}</button></td>
+             </tr>
+          {% endfor %}
+          </td>
+          </tr>
+          </td>
+          </tr>
+        </tbody>
+      </table>
+      </form>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Wolf Pack специально для КПИТ</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+	
+	<!-- Bootstrap core JavaScript -->
+    <script src="{% static 'teacher.html/module.html/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'teacher.html/module.html/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+	
+</body>
+</html>
